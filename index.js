@@ -78,7 +78,9 @@ app.post("/admin/toggleUser", async (req, res, next) => {
     res.status(401).json(err);
   }
 });
-
+app.get("/", (req, res, next) => {
+  res.send("Fine");
+});
 app.listen(8081, function () {
   console.log("CORS-enabled web server listening on port 8081");
 });
