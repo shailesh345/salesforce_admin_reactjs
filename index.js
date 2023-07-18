@@ -112,7 +112,7 @@ app.post("/admin/sendCredentialEmail", async function (req, res, next) {
     res.status(200).send(apiResponse.data);
   } catch (err) {
     console.log(err);
-    res.status(401).json(err);
+    res.status(201).json(err);
   }
 });
 
