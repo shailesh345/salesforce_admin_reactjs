@@ -115,7 +115,25 @@ app.post("/admin/sendCredentialEmail", async function (req, res, next) {
     res.status(201).json(err);
   }
 });
-
+//Signup
+app.post("/admin/signUp", async function (req, res, next) {
+  try {
+    let apiResponse = await axios.post(
+      "https://oui2godvid.execute-api.us-east-1.amazonaws.com/UsersAPI/updateusers",
+      req.body,
+      {
+        headers: {
+          Authorization: req.headers.authorization,
+        },
+      }
+    );
+    //console.log(apiResponse.data);
+    res.status(200).send(apiResponse.data);
+  } catch (err) {
+    console.log(err);
+    res.status(201).json(err);
+  }
+});
 // Subscription updfate
 app.post("/admin/editSubscriptionPlan", async function (req, res, next) {
   try {
