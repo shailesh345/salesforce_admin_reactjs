@@ -116,6 +116,30 @@ app.post("/admin/sendCredentialEmail", async function (req, res, next) {
   }
 });
 
+// Subscription updfate
+app.post("/admin/editSubscriptionPlan", async function (req, res, next) {
+  try {
+    let apiResponse = await axios.post(
+      "https://v11lm0cut1.execute-api.us-east-1.amazonaws.com/admin/editSubscriptionPlan",
+      req.body,
+      {
+        headers: {
+          Authorization: req.headers.authorization,
+        },
+      }
+    );
+    //console.log(apiResponse.data);
+    res.status(200).send(apiResponse.data);
+  } catch (err) {
+    console.log(err);
+    res.status(201).json(err);
+  }
+});
+
+app.get("/", (req, res, next) => {
+  res.send("Fine");
+});
+
 app.get("/", (req, res, next) => {
   res.send("Fine");
 });
